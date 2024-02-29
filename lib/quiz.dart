@@ -3,6 +3,7 @@ import 'package:quiz_game/data/questions.dart';
 import 'package:quiz_game/questions_screen.dart';
 
 import 'package:quiz_game/start_screen.dart';
+import 'package:quiz_game/results_screen.dart';
 
 List<Color> colors = const [
   Color.fromARGB(255, 78, 13, 151),
@@ -34,7 +35,7 @@ class _QuizState extends State<Quiz> {
     if (selectedAnswers.length == questions.length) {
       selectedAnswers = [];
       setState(() {
-        activeScreen = 'start-screen';
+        activeScreen = 'result-screen';
       });
     }
   }
@@ -45,6 +46,10 @@ class _QuizState extends State<Quiz> {
 
     if (activeScreen == 'question-screen') {
       screenWidget = QuestionsScreen(choosedAnswer);
+    }
+
+    if (activeScreen == 'result-screen') {
+      screenWidget = const ResultsScreen();
     }
 
     return MaterialApp(
